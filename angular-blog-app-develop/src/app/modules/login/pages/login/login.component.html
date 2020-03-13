@@ -1,0 +1,44 @@
+
+  <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control
+        nzHasFeedback
+      >
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            placeholder="Email"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control
+        nzHasFeedback
+      >
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            placeholder="Password"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button
+          type="submit"
+          class="login-form-button"
+          nz-button
+          [nzType]="'primary'"
+        >
+          Log in
+        </button>
+        <button (click)="login()" nz-button nzType="primary">Login With Google!</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+

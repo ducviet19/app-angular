@@ -1,0 +1,33 @@
+
+<h2 class="head">Management Articles</h2>
+
+<button nz-button nzType="primary"  routerLink="/article/new">Create New Articles</button>
+<nz-input-group >
+  <input #query (keyup)="filter(query.value)" type="text" nz-input placeholder="Search" />
+</nz-input-group>
+
+
+<div class="body" *ngFor="let data of filterArticle">
+
+  <nz-list 
+  [nzDataSource]="data" 
+  [nzItemLayout]="'vertical'" 
+  [nzRenderItem]="data"
+  nzHoverable style="width:240px">
+
+    <nz-list-item [nzExtra]="extra">
+      <nz-list-item-meta [nzAvatar]="data.imageUrl" [nzTitle]="nzTitle" >
+        <ng-template #nzTitle>
+          <a [routerLink]="['/article/' , data.key]">{{ data.title }}</a>
+        </ng-template>
+      </nz-list-item-meta>
+      <ng-template #extra>
+        <img width="272" alt="logo" [src]="data.imageUrl" />
+      </ng-template>
+    </nz-list-item>
+
+  </nz-list>
+
+
+  <nz-divider></nz-divider>
+</div>

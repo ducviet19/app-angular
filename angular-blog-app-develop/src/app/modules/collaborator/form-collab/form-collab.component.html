@@ -1,0 +1,32 @@
+<p>form-collab works!</p>
+<h2>Cộng Tác Viên</h2>
+<form nz-form #f="ngForm" (ngSubmit)="save(f.value)" >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">Tên</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Name is required">
+      <input [(ngModel)]="collaborator.name" nz-input #name="ngModel"  name="name" id="name" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">Phone</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Phone is not valid">
+      <input nz-input #phone="ngModel" [(ngModel)]="collaborator.phone" name="phone" id="phone" minlength="10" />
+    </nz-form-control>
+  </nz-form-item> 
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">Email</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Email is not valid">
+      <input nz-input #email="ngModel" [(ngModel)]="collaborator.email" name="email" id="email" email />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">Địa Chỉ</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Email is not valid">
+      <input nz-input #address="ngModel" [(ngModel)]="collaborator.address" name="address" id="address" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-control [nzSpan]="14" [nzOffset]="6">
+    <button nz-button nzType="primary">Add</button>
+    <button type="button" nz-button nzType="danger" (click)="delete()">Delete</button>
+  </nz-form-control>
+</form>

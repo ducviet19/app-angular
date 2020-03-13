@@ -1,0 +1,44 @@
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Article</h2>
+<form nz-form #f="ngForm" (ngSubmit)="save(f.value)" >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">Title</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Name is required">
+      <input #title="ngModel"  [(ngModel)]="article.title"  nz-input  name="title" id="title" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">Content</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Content is not valid">
+        <textarea rows="4" nz-input #content="ngModel" [(ngModel)]="article.content" name="content" id="content"></textarea>
+      <!-- <input #content="ngModel" [(ngModel)]="article.content" nz-input ngModel type="textarea" name="content" id="content" /> -->
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label for="imageUrl" [nzSpan]="5">Image</nz-form-label>
+    <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="image is not valid">
+      <input #imageUrl="ngModel" [(ngModel)]="article.imageUrl" nz-input type="text" ngModel name="imageUrl" id="imageUrl" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-control [nzSpan]="14" [nzOffset]="6">
+    <button nz-button nzType="primary">Add</button>
+    <button type="button" nz-button nzType="danger" (click)="delete()">Delete</button>
+  </nz-form-control>
+</form>
+    </div>
+    <div class="col-md-6">
+        <div class="card" style="width: 10rem;">
+          <img *ngIf="article.imageUrl" class="card-img-bot" [src]="article.imageUrl" alt="{{ article.title }}">
+          <div class="card-body"> 
+            <h5 class="card-title">{{ article.title }}</h5>
+          </div>
+        </div>
+      </div>
+</div>    
+
+
+
+
+

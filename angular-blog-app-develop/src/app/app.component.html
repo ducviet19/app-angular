@@ -1,0 +1,68 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible n zWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a routerLink="/dashboard">
+      </a>
+    </div>
+    
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <ng-container *ngIf="user$ | async as user">
+        <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+          <ul>
+            <li nz-menu-item>
+              <a routerLink="/welcome">Xin Chào {{user.displayName}} </a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/">
+                <i nz-icon nzType="contacts" nzTheme="outline"></i>
+                <span *ngIf="!isCollapsed">Home</span>
+              </a>
+            </li>
+            <li nz-menu-item>
+              <a routerLink="/about">
+                <i nz-icon nzType="contacts" nzTheme="outline"></i>
+                <span *ngIf="!isCollapsed">About
+                </span>
+              </a>
+            </li>
+            <li nz-menu-item>
+              <a routerLink="/article">
+                <i nz-icon nzType="contacts" nzTheme="outline"></i>
+                <span *ngIf="!isCollapsed">Manager Article</span>
+              </a>
+            </li>
+            <li nz-menu-item>
+              <a routerLink="/collab">
+                <i nz-icon nzType="contacts" nzTheme="outline"></i>
+                <span *ngIf="!isCollapsed">Manage Collaborators</span>
+              </a>
+            </li>
+
+            <li nz-menu-item>
+              <a (click)="logout()">
+                <i nz-icon nzType="logout" nzTheme="outline"></i>
+                <span *ngIf="!isCollapsed">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ng-container>
+
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
